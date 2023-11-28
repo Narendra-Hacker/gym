@@ -12,7 +12,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+ 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,3 +36,338 @@
     transform: rotate(360deg);
   }
 }
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  margin-right: 20px;
+}
+
+.nav-link a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-link a:hover {
+  color: #f2f2f2;
+}
+
+.my-bt {
+  background-color: blue;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-top: 60px;
+}
+
+
+
+.my-btn {
+  background-color: rgb(181, 181, 209);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 6px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  /* margin-left: 110px; */
+}
+
+.my-btnn{
+  background-color: rgb(247, 30, 30);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 6px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  /* margin-left: 110px; */
+}
+
+
+
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  position: relative;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./components/photo-1571902943202-507ec2618e8f.avif');
+  background-color: chocolate;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  animation: background-fade-in 2s ease-in-out;
+}
+
+.bck {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./components/istockphoto-1369898115-612x612.jpg');
+  background-color: chocolate;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  animation: background-fade-in 2s ease-in-out;
+}
+
+.my {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./components/photo-1507398941214-572c25f4b1dc.avif');
+  background-color: chocolate;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  animation: background-fade-in 2s ease-in-out;
+}
+.log {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('./components/premium_photo-1663050901483-ee8703cc8372.avif');
+  background-color: chocolate;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  animation: background-fade-in 2s ease-in-out;
+}
+
+
+.content-container {
+  z-index: 1;
+  text-align: center;
+  color: aliceblue;
+  background-color: rgba(4, 4, 4, 0.8);
+  padding: 2rem;
+  border-radius: 1rem;
+  transform: translateY(50px);
+  animation: fadeUp 1.5s ease forwards;
+}
+
+.my-button {
+  background-color: #2d09e3; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+
+.main-content {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.animated-heading {
+  position: center;
+  text-align: center;
+} 
+
+.my-div {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+/* Add additional styling for headings, links, etc. as needed */
+
+/* Example: Style the <h1> element */
+h1 {
+  color: #333;
+  
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Example: Style links */
+a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+/* Example: Style links on hover */
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* app.css */
+
+
+.container-form {
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for a card-like appearance */
+}
+
+.form-header {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Use specific selectors for form elements */
+.container-form .form-control {
+  margin-bottom: 10px;
+}
+
+
+
+.btn-margin {
+  margin-right: 10px;
+}
+
+
+
+/* Add this CSS to your stylesheet */
+.signup-text:hover {
+  color: blue; /* Change the text color when hovered */
+  /* Add any other hover styles you want */
+  text-decoration: underline; /* Add underline on hover */
+  cursor: pointer; /* Change cursor on hover for better user experience */
+}
+
+
+/* Add this CSS to your stylesheet */
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-space {
+  width: 150px; /* Adjust the width to your desired spacing */
+}
+/* Login Container */
+.login-container {
+  display: flex;
+  height: 100vh; /* 100% of the viewport height */
+}
+
+/* Left Half (Image) */
+.left-half {
+  flex: 1;
+  /* justify-content: center; */
+  background: url('./components/photo-1571902943202-507ec2618e8f.avif') center/cover no-repeat; /* Replace 'YOUR_IMAGE_URL' with the actual image URL */
+}
+
+/* Right Half (Login Form) */
+.right-half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* Background color for the form */
+}
+
+/* Login Form Styles */
+.login-form {
+  width: 80%; /* Adjust the form width as needed */
+  max-width: 400px; /* Maximum width for the form */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-form h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form .form-check {
+  text-align: left;
+}
+
+.GoogleOauthTest {
+  width: 100%; /* Set the width to 100% to match the login form */
+}
+
+
+/* App.css */
+
+.trainerpage {
+  background-image: url('./components/trainerprofile.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center the content vertically */
+  padding: 20px; /* Adjust padding as needed */
+  color: white; /* Set text color for better visibility */
+}
+
+header {
+  margin-top: 0px;
+}
+
+

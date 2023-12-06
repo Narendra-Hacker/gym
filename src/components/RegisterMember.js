@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 function RegisterMember() {
   const [memberId, setMemberID] = useState();
   const [firstName, setFirstName] = useState();
@@ -12,11 +11,38 @@ function RegisterMember() {
   const [dateOfJoin, setDateOfJoin] = useState();
   const [trainerId, setTrainerID] = useState();
   const [email, setEmail] = useState();
-  //const[members,setmembers] = useState([]);
   const [password, setPassword] = useState();
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
- 
+
+  const validateInputs = () => {
+    // Phone number validation
+    if (mobileNo.length !== 10) {
+      setError("Phone number must be 10 digits");
+      return false;
+    }
+
+    // Password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 6 characters long and include a mix of uppercase letters, lowercase letters, and numbers."
+      );
+      return false;
+    }
+
+    // Email validation
+    if (!email.includes("@")) {
+      setError("Invalid email address");
+      return false;
+    }
+
+    // Clear previous errors if any
+    setError("");
+    return true;
+  };
+
   const getTrainers = async (e) => {
     console.log(e.target.value);
     const response = await axios.get(
@@ -39,6 +65,16 @@ function RegisterMember() {
   async function save(event) {
     event.preventDefault();
 
+    try{
+    // Validate inputs before making the API call
+    if (!validateInputs()) {
+      return;
+    }
+  }
+  catch{
+    console.log("Enter all the fileds");
+  }
+
     try {
       await axios.post("https://localhost:7114/api/MemberRegt/Register", {
         FirstName: firstName,
@@ -51,6 +87,7 @@ function RegisterMember() {
         Password: password,
       });
       alert("Member Registration Successfully");
+      // ... (unchanged)
       setMemberID("");
       setFirstName("");
       setLastName("");
@@ -70,15 +107,14 @@ function RegisterMember() {
 
   return (
     <>
-      <div className="container mt-0 container-form" style={{width:'500px'}}>
+      <div className="container mt-0 container-form" style={{ width: "500px" }}>
         <div className="card">
           <div className="card-body">
-            {/* <Link to="/loginmem">
-              <button className="btn btn-primary">Back</button>
-            </Link> */}
             <h2 className="form-header">Member Registration</h2>
 
             <form>
+              {/* ... (unchanged) */}
+
               <div className="mb-0">
                 <div className="form-group">
                   <input
@@ -114,20 +150,23 @@ function RegisterMember() {
                     }}
                   />
                 </div>
-                <div className="form-group">
-                  <label>Mobile No</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="mobileNo"
-                    value={mobileNo}
-                    onChange={(event) => {
-                      setMobileNo(event.target.value);
-                    }}
-                  />
-                </div>
+              
 
-                <div className="form-group">
+              
+              <div className="form-group">
+                <label>Phone Number</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="mobileNo"
+                  value={mobileNo}
+                  onChange={(event) => {
+                    setMobileNo(event.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="form-group">
                   <label>City</label>
                   <input
                     type="text"
@@ -182,41 +221,45 @@ function RegisterMember() {
                   ></select>
                 </div>
 
-                <div className="form-group">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={email}
-                    onChange={(event) => {
-                      setEmail(event.target.value);
-                    }}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    value={password}
-                    onChange={(event) => {
-                      setPassword(event.target.value);
-                    }}
-                  />
-                </div>
-                
-                <div>
-                  <button className="btn btn-primary mt-4 mx-2" onClick={save}>
-                    Register
-                  </button>
-                  <button className="btn btn-primary mt-4 mx-2" onClick={()=>navigate('/loginmem')}>
-                    Already a user
-                  </button>
-                </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  value={email}
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                />
               </div>
+
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  value={password}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                />
+              </div>
+
+              {/* Display error message in red */}
+              {error && <p style={{ color: "red" }}>{error}</p>}
+
+              <div>
+                <button className="btn btn-primary mt-4 mx-2" onClick={save}>
+                  Register
+                </button>
+                <button className="btn btn-primary mt-4 mx-2" onClick={() => navigate("/loginmem")}>
+                  Already a user
+                </button>
+              </div>
+              </div>
+              
             </form>
           </div>
         </div>

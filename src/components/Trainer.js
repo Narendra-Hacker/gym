@@ -10,6 +10,10 @@ function Trainer() {
   const [schedule, setSchedule] = useState([]);
   const navigate = useNavigate();
 
+  const getToken =()=> localStorage.getItem('par');
+  const token = getToken();
+  console.log("JWT Token is : ", token);
+
   useEffect(() => {
     fetchData();
     // fetchclient();
@@ -18,7 +22,12 @@ function Trainer() {
   const fetchData = async () => {
     var email = localStorage.getItem("email");
     const response = await fetch(
-      `https://localhost:7114/api/TrainerRegt/GetData?email=${email}`
+      `https://localhost:7114/api/TrainerRegt/GetData?email=${email}`,{
+        headers :{
+          'Authorization' :`Bearer ${token}`,
+          'Content-Type' :'application/json'
+        },
+      }
     );
     const jsonData = await response.json();
     setTrainer(jsonData);
@@ -54,7 +63,7 @@ function Trainer() {
   const handleLogout = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("password");
-    localStorage.removeItem("par");
+    //localStorage.removeItem("par");
     localStorage.removeItem("name");
     localStorage.removeItem("clientID");
     localStorage.removeItem("value");

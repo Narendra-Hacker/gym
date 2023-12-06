@@ -23,6 +23,9 @@ export function TrainerAPI() {
   const [scheduleId, setScheduleID] = useState();
 
   const navigate = useNavigate();
+  const getToken =()=> localStorage.getItem('par');
+  const token = getToken();
+  console.log("JWT Token is : ", token);
   const handleLogout = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("password");
@@ -41,8 +44,14 @@ export function TrainerAPI() {
   }, []);
 
   async function Load() {
+    const token = getToken();
     const result = await axios.get(
-      "https://localhost:7114/api/TrainerRegt/GetTrainer"
+      "https://localhost:7114/api/TrainerRegt/GetTrainer",{
+        headers :{
+          'Authorization' :`Bearer ${token}`,
+          'Content-Type' :'application/json'
+        },
+      }
     );
     settrainers(result.data);
     console.log(result.data);

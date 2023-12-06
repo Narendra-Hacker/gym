@@ -29,6 +29,7 @@ function Login() {
   const handleClose = () => {
     setShow(false);
   };
+  
 
   const handleShow = () => setShow(true);
 
@@ -40,7 +41,7 @@ function Login() {
 
   const encodedpassword = encodeURIComponent(Password);
   var P = parseInt(localStorage.getItem("value"));
-  console.log(P);
+  //console.log(P);
 
   // const getuser =(e)=>
   //     {
@@ -81,7 +82,7 @@ function Login() {
         }
       );
       result1 = await result1.json();
-      console.log(result1);
+      //console.log(result1);
       localStorage.setItem("value", 1);
       //localStorage.setItem("par",2);
       var p = localStorage.getItem("value");
@@ -96,13 +97,13 @@ function Login() {
   async function login() {
     localStorage.setItem("email", Email);
     localStorage.setItem("password", Password);
-    console.log(Email);
-    console.log(Password);
+    //console.log(Email);
+    //console.log(Password);
     var email1 = localStorage.getItem("email");
     var password1 = localStorage.getItem("password");
 
     var p = localStorage.getItem("value");
-    console.log(p);
+    //console.log(p);
 
     // if( p === 1 )
     // {
@@ -135,8 +136,10 @@ function Login() {
             }
           );
           result = await result.json();
-          console.log(result);
+          //console.log(result);
           localStorage.setItem("par", result);
+
+
           let item2 = { Email, Password };
           let result1 = await fetch(
             `https://localhost:7114/api/TrainerRegt/GetName?email=${Email}&password=${encodedpassword}`,
@@ -150,20 +153,21 @@ function Login() {
             }
           );
           result1 = await result1.json();
-          console.log(result1);
+          //console.log(result1);
           localStorage.setItem("name", result1);
-          console.log(`Global name is ${result1}`);
+          //console.log(`Global name is ${result1}`);
 
           var res = localStorage.getItem("par");
           //console.log(res)
-          if (res === "Authorized") {
+          if (res !== "Unauthorized") {
             setisLoggedIn(true);
             //console.log(result)
             navigate("/trainer");
+            //console.log(res);
           } else {
             console.log("User not found");
             setisLoggedIn(false);
-            alert("User not found");
+            //alert("User not found");
           }
         } catch (error) {
           console.log(error);
@@ -234,6 +238,7 @@ function Login() {
           } else {
             console.log("User not found");
             setisLoggedIn(false);
+            alert("User not found");
           }
         } catch (error) {
           console.log(error);
@@ -336,7 +341,10 @@ function Login() {
           {isLoggedIn ? (
             ""
           ) : (
-            <p style={{ fontWeight: "bold" }}>Email or Password is Incorrect</p>
+            <div>
+              <br></br>
+            <p style={{ fontWeight: "bold",color:"red" }}>Email or Password is Incorrect</p>
+            </div>
           )}
           {/* <p style={{ color: "black" }}>
                       Dont have an account? <a href="/register"> Signup </a>

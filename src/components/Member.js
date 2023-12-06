@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, Route, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-function Member() {
+function Member() { 
   const [member, setmembers] = useState([]);
   const [billData, setBillData] = useState(null);
   const [memberData, setMemberData] = useState(null);
